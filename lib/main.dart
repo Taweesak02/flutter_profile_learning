@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Center(
-              child: Text("My Profile",
+              child: Text(
+                "My Profile",
                 style: TextStyle(color: Colors.amberAccent),
               ),
             ),
@@ -30,23 +31,32 @@ class MyApp extends StatelessWidget {
           ),
           body: Column(
             children: [
-              Align(
+              Align(//ส่วนภาพโปรไฟล์
                 alignment: Alignment.topCenter,
                 child: SizedBox(
                   width: 300,
                   child: Transform.translate(
                     offset: Offset(0, 20),
-                    child: CircleAvatar(
-                      radius: 200,
-                      backgroundImage: AssetImage('assets/face.jpg'),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.amber, width: 5),
+                      ),
+                      child: CircleAvatar(
+                        radius: 200,
+                        backgroundImage: AssetImage('assets/face.jpg'),
+                      ),
                     ),
                   ),
                 ),
               ),
-              Container(
-                width: 450,
-                height: 200,
-                color: Colors.amberAccent,
+              Container(//ส่วนอธิบายข้อมูล
+                width: 480,
+                height: 160,
+                decoration: BoxDecoration(
+                  color: Colors.amberAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(20)),
+                ),
                 child: Column(
                   children: [
                     Center(
