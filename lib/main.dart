@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               ),
               Container(//ส่วนอธิบายข้อมูล
                 width: 480,
-                height: 160,
+                height: 200,
                 decoration: BoxDecoration(
                   color: Colors.amberAccent,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
                         width: 500,
                         child: ListTile(
                           title: Text(
-                            "บ้านเลขที่ 7 หมู่ที่ 1 ต.ดอนไผ่ จ.ราชบุรี",
+                            "บ้านเลขที่ 7 หมู่ที่ 1 ต.ดอนไผ่ อ.ดำเนินสะดวก จ.ราชบุรี",
                             textScaler: TextScaler.linear(1.5),
                           ),
                           leading: Icon(
