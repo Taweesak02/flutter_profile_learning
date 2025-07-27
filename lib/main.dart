@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_profile/contactpage.dart';
+import 'package:my_profile/educationpage.dart';
+import 'package:my_profile/hobbypage.dart';
 import 'package:my_profile/profilepage.dart';
+import 'package:my_profile/skillpage.dart';
 
 void main() {
   runApp(MyApp());
 }
+
+Color profileColor = Colors.amber;
+Color contactColor = Colors.cyan;
+Color skillColor = Colors.redAccent;
+Color educationColor = Colors.green;
+Color hobbyColor = Colors.lightBlue;
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -24,7 +34,11 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(title: "HomePage"),
-        '/profile': (context) => const ProfilePage(title: 'Profile'),
+        '/profile': (context) => ProfilePage(title: 'Profile',color: profileColor,),
+        '/contact': (context) => ContactPage(title: "Contact",color: contactColor,),
+        '/skill': (context) =>  SkillPage(title: "Skills",color: skillColor,),
+        '/education': (context) => EducationPage(title: "Education",color: educationColor,),
+        '/hobby': (context) => HobbyPage(title: "Hobby",color: hobbyColor,),
       },
     );
   }
@@ -34,6 +48,8 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
+
+  
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,37 +63,32 @@ class HomePage extends StatelessWidget {
           App(
             route: "/profile",
             appTitle: "Overview",
-            color: Colors.amber,
-            fontColor: Colors.white,
+            color: profileColor,
             icon: Icons.person,
           ),
           App(
-            route: "",
+            route: "/contact",
             appTitle: "Contact",
-            color: Colors.cyan,
-            fontColor: Colors.white,
+            color: contactColor,
             icon: Icons.mail,
           ),
           App(
-            route: "",
+            route: "/skill",
             appTitle: "Skills",
-            color: Colors.redAccent, 
-            fontColor: Colors.white, 
-            icon: Icons.settings
+            color: skillColor,
+            icon: Icons.settings,
           ),
           App(
-            route: "", 
-            appTitle: "Education", 
-            color: Colors.green, 
-            fontColor: Colors.white, 
-            icon: Icons.school
+            route: "/education",
+            appTitle: "Education",
+            color: educationColor,
+            icon: Icons.school,
           ),
           App(
-            route: "", 
-            appTitle: "Hobby", 
-            color: Colors.lightBlue, 
-            fontColor: Colors.white, 
-            icon: Icons.brush
+            route: "/hobby",
+            appTitle: "Hobby",
+            color: hobbyColor,
+            icon: Icons.brush,
           ),
         ],
       ),
@@ -91,14 +102,13 @@ class App extends StatelessWidget {
     required this.route,
     required this.appTitle,
     required this.color,
-    required this.fontColor,
     required this.icon,
   });
 
   final String appTitle;
   final String route;
   final Color color;
-  final Color fontColor;
+  final Color fontColor = Colors.white;
   final IconData icon;
 
   Widget build(BuildContext context) {
@@ -115,9 +125,31 @@ class App extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 100, color: fontColor),
-          Text(appTitle, style: TextStyle(fontSize: 15, color: fontColor)),
+          Expanded(flex: 5, child: Icon(icon, size: 100, color: fontColor)),
+          Expanded(
+            flex: 1,
+            child: Text(
+              appTitle,
+              style: TextStyle(fontSize: 15, color: fontColor),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class ShowInfo extends StatelessWidget {
+  const ShowInfo({super.key, required this.detail, required this.icon});
+
+  final String detail;
+  final IconData icon;
+
+  Widget build(BuildContext context) {
+    return Center(
+      child: ListTile(
+        title: Text(detail, textScaler: TextScaler.linear(1.5)),
+        leading: Icon(icon, color: Colors.red[800], size: 40),
       ),
     );
   }

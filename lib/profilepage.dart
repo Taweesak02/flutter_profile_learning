@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:my_profile/main.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key,required this.title}) : super(key: key);
+  const ProfilePage({Key? key, required this.title,required this.color}) : super(key: key);
 
   final String title;
-
+  final Color color;
 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title),backgroundColor: color,),
       body: Container(
         height: double.infinity,
         decoration: BoxDecoration(
@@ -49,7 +50,10 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
                 child: Column(
-                  children: [nameInfo(), locateInfo(), contactInfo()],
+                  children: [
+                    nameInfo(),
+                    ShowInfo(detail: "Taweesak Nakthap", icon: Icons.person),
+                  ],
                 ),
               ),
             ],
@@ -70,36 +74,6 @@ Center nameInfo() {
           textScaler: TextScaler.linear(1.5),
         ),
         leading: Icon(Icons.portrait, color: Colors.red[800], size: 40),
-      ),
-    ),
-  );
-}
-
-Center locateInfo() {
-  return Center(
-    child: SizedBox(
-      width: 500,
-      child: ListTile(
-        title: Text(
-          "บ้านเลขที่ 7 หมู่ที่ 1 ต.ดอนไผ่ อ.ดำเนินสะดวก จ.ราชบุรี",
-          textScaler: TextScaler.linear(1.5),
-        ),
-        leading: Icon(Icons.home, color: Colors.red[800], size: 40),
-      ),
-    ),
-  );
-}
-
-Center contactInfo() {
-  return Center(
-    child: SizedBox(
-      width: 500,
-      child: ListTile(
-        title: Text(
-          "093-9187152 , 095-2327043",
-          textScaler: TextScaler.linear(1.5),
-        ),
-        leading: Icon(Icons.phone, color: Colors.red[800], size: 40),
       ),
     ),
   );
